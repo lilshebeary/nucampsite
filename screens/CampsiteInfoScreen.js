@@ -2,9 +2,11 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import RenderCampsite from '../features/campsites/RenderCampsite';
 
-const CampsiteInfoScreen = (props) => {
+const CampsiteInfoScreen = ({ route }) => {
+  const { campsite } = route.params;
+
   return (
-   <RenderCampsite campsite={props.campsite} />
+   <RenderCampsite campsite={campsite} />
   )
 }
 
