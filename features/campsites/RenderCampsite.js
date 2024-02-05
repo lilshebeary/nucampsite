@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Icon } from 'react-native-elements';
 
 const RenderCampsite = ({ campsite }) => {
     if(campsite) {
         return ( 
-            <Card containerStyle={{ padding: 0}}>
+            <Card containerStyle={styles.cardContainer}>
                 <Card.Image source={campsite.image}>
                     <View style={{ justifyContent: 'center', flex: 1 }}>
                         <Text
@@ -25,4 +25,8 @@ const RenderCampsite = ({ campsite }) => {
 
 export default RenderCampsite;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    cardContainer: {
+        padding: 0,
+    }
+})
