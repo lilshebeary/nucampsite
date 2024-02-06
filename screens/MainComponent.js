@@ -1,13 +1,18 @@
-import { StyleSheet, View, Platform } from "react-native";
+import { StyleSheet, View, Platform, Image, Text } from "react-native";
 import Constants from "expo-constants";
 import DirectoryScreen from "./DirectoryScreen";
 import CampsiteInfoScreen from "./CampsiteInfoScreen";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { 
+  createDrawerNavigator, 
+  DrawerContentScrollView, 
+  DrawerItemList 
+} from "@react-navigation/drawer";
 import HomeScreen from "./HomeScreen";
 import AboutScreen from "./AboutScreen";
 import ContactScreen from "./ContactScreen";
 import { Icon } from "react-native-elements";
+import logo from '../assets/images/logo.png'
 
 const Drawer = createDrawerNavigator();
 
@@ -116,6 +121,20 @@ const DirectoryNavigator = () => {
   );
 };
 
+const CustomDrawerContent = (props) => (
+  <DrawerContentScrollView {...props}>
+    <View style={styles.drawerHeader}>
+      <View style={{flex: 1}}>
+        <Image source={logo} style={styles.drawerImage} />
+      </View>
+      <View style={{flex: 2}}>
+        <Text style={styles.drawerHeaderText}>NuCamp</Text>
+      </View>
+    </View>
+    <DrawerItemList {...props} labelStyle={{fontWeight: 'bold'}} />
+  </DrawerContentScrollView>
+)
+
 const Main = () => {
   return (
     <View
@@ -126,6 +145,7 @@ const Main = () => {
     >
       <Drawer.Navigator
         initialRouteName="Home"
+        drawerContent={CustomDrawerContent}
         drawerStyle={{ backgroundColor: "#CEC8FF" }}
       >
         <Drawer.Screen
@@ -201,9 +221,28 @@ const Main = () => {
 export default Main;
 
 const styles = StyleSheet.create({
+  drawerHeader: {
+    backgroundColor: '#5637dd',
+    height: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row'
+  },
+  drawerHeaderText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  drawerImage: {
+    margin: 10, 
+    height: 60,
+    width: 60
+  },
   stackIcon: {
     marginLeft: 10,
     color: '#fff',
     fontSize: 24
-  }
+  },
+  
 });
