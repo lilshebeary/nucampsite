@@ -34,17 +34,28 @@ const AboutScreen = () => {
   if(partners.errMess){
     return(
       <ScrollView>
-      <Mission />
-      <Card>
-        <Card.Title>Community Partners</Card.Title>
-        <Card.Divider />
-        <Text>{partners.errMess}</Text>
-      </Card>
+        <Animatable.View
+          animation='fadeInDown'
+          duration={2000}
+          delay={1000}
+        >
+          <Mission />
+          <Card>
+            <Card.Title>Community Partners</Card.Title>
+            <Card.Divider />
+            <Text>{partners.errMess}</Text>
+          </Card>
+      </Animatable.View>
      </ScrollView>
     )
   } 
   return(
      <ScrollView>
+       <Animatable.View
+          animation='fadeInDown'
+          duration={2000}
+          delay={1000}
+        >
       <Mission />
       <Card>
         <Card.Title>Community Partners</Card.Title>
@@ -61,6 +72,7 @@ const AboutScreen = () => {
           );      
         })}
       </Card>
+      </Animatable.View>
      </ScrollView>
   )
       

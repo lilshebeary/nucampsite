@@ -80,13 +80,18 @@ const FavoritesScreen = ({ navigation }) => {
   }
 
   return (
-    <FlatList
-      data={campsitesArray.filter((campsite) =>
-        favorites.includes(campsite.id)
-      )}
-      renderItem={renderFavoriteItem}
-      keyExtractor={(item) => item.id.toString()}
-    />
+    <Animatable.View
+      animation='fadeInRightBig'
+      duration={2000}
+    >
+      <FlatList
+        data={campsitesArray.filter((campsite) =>
+          favorites.includes(campsite.id)
+        )}
+        renderItem={renderFavoriteItem}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </Animatable.View>
   );
 };
 
