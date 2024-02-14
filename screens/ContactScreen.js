@@ -1,4 +1,4 @@
-
+import * as Animatable from 'react-native-animatable';
 import {  Text, ScrollView } from 'react-native';
 import { Card } from 'react-native-elements';
 

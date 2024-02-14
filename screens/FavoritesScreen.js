@@ -12,6 +12,7 @@ import Loading from "../components/LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
 import { SwipeRow } from "react-native-swipe-list-view";
 import { toggleFavorite } from "../features/favorites/favoritesSlice";
+import * as Animatable from 'react-native-animatable';
 
 const FavoritesScreen = ({ navigation }) => {
   const { campsitesArray, isLoading, errMess } = useSelector(
