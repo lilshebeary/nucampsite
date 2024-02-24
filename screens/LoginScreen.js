@@ -293,7 +293,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderColor: '#808080',
     borderWidth: .5,
-  
   },
   formIcon: {
     marginRight: 10,
