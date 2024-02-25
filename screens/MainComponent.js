@@ -240,7 +240,8 @@ const Main = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        NetInfo.fetch().then((connectionInfo) => {
+        async () => {
+            const showNetInfo = await NetInfo.fetch((connectionInfo) => {
             Platform.OS === 'ios'
                 ? Alert.alert(
                       'Initial Network Connectivity Type:',
@@ -251,16 +252,17 @@ const Main = () => {
                           connectionInfo.type,
                       ToastAndroid.LONG
                   );
-        });
-
+                  showNetInfo()
+                  .catch(console.err);
+            })
+        }
         const unsubscribeNetInfo = NetInfo.addEventListener(
             (connectionInfo) => {
                 handleConnectivityChange(connectionInfo);
             }
         );
-
         return unsubscribeNetInfo;
-    }, []);
+    }, [])
 
     const handleConnectivityChange = (connectionInfo) => {
         let connectionMsg = 'You are now connected to an active network.';
